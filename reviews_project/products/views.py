@@ -46,15 +46,15 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy('products:list')
 
 
-# class ReviewCreate(CreateView):
-#     template_name = 'product_form.html'
-#     model = Review
-#     form_class = ReviewForm
-#
-#     def form_valid(self, form):
-#         product = Product.object.get(pk=self.kwargs.get('pk'))
-#         review = form.save(commit=False)
-#         review.product = product
-#         review.save()
-#         form.save_m2m()
-#         return redirect('product:detail', pk=product.pk)
+class ReviewCreate(CreateView):
+    template_name = 'product_form.html'
+    model = Review
+    form_class = ReviewForm
+
+    def form_valid(self, form):
+        product = Product.objects.get(pk=self.kwargs.get('pk'))
+        review = form.save(commit=False)
+        review.product = product
+        review.save()
+        form.save_m2m()
+        return redirect('product:detail', pk=product.pk)

@@ -6,6 +6,7 @@ Product detail
 {% block menu %}
     <li><a href="{% url 'products:update' product.pk %}">Update Product</a></li>
     <li><a href="{% url 'products:delete' product.pk %}">Delete product</a></li>
+    <li><a href="{% url 'products:create_review' product.pk %}">Create Review</a></li>
 {% endblock menu %}
 
 {% block content %}
