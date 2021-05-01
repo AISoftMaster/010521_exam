@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+Product detail
+{% endblock title %}
+
+{% block menu %}
+    <li><a href="{% url 'products:update' product.pk %}">Update Product</a></li>
+    <li><a href="{% url 'products:delete' product.pk %}">Delete product</a></li>
+    <li><a href="{% url 'reviews:create' product.pk %}">New Review</a></li>
+{% endblock menu %}
+
+{% block content %}
+{{ product.name }}
+
+<ul>
+    {% for review in product.reviews.all %}
+    <li>{{ review.author }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
